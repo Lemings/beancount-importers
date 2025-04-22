@@ -20,7 +20,8 @@ def get_importer_config(type, account, currency, importer_params):
         return dict(
             **common,
             module="beancount_import.source.generic_importer_source_beangulp",
-            importer=import_monzo.get_importer(account, currency, importer_params),
+            importer=import_monzo.get_importer(
+                account, currency, importer_params),
             description=(
                 "In the app go to Help > Download a statement. "
                 "The easiest way would be just to download monthly statements every month."
@@ -117,7 +118,8 @@ def load_import_config_from_file(filename, data_dir, output_dir):
         return dict(
             all=dict(
                 data_sources=data_sources,
-                transactions_output=os.path.join(output_dir, "transactions.bean"),
+                transactions_output=os.path.join(
+                    output_dir, "transactions.bean"),
             )
         )
 
@@ -128,18 +130,21 @@ def get_import_config(data_dir, output_dir):
             data_sources=[
                 dict(
                     module="beancount_import.source.generic_importer_source_beangulp",
-                    importer=import_monzo.get_importer("Assets:Monzo:Cash", "GBP"),
+                    importer=import_monzo.get_importer(
+                        "Assets:Monzo:Cash", "GBP"),
                     account="Assets:Monzo:Cash",
                     directory=os.path.join(data_dir, "monzo"),
                 )
             ],
-            transactions_output=os.path.join(output_dir, "monzo", "transactions.bean"),
+            transactions_output=os.path.join(
+                output_dir, "monzo", "transactions.bean"),
         ),
         "wise_usd": dict(
             data_sources=[
                 dict(
                     module="beancount_import.source.generic_importer_source_beangulp",
-                    importer=import_wise.get_importer("Assets:Wise:Cash", "USD"),
+                    importer=import_wise.get_importer(
+                        "Assets:Wise:Cash", "USD"),
                     account="Assets:Wise:Cash",
                     directory=os.path.join(data_dir, "wise_usd"),
                 )
@@ -152,7 +157,8 @@ def get_import_config(data_dir, output_dir):
             data_sources=[
                 dict(
                     module="beancount_import.source.generic_importer_source_beangulp",
-                    importer=import_wise.get_importer("Assets:Wise:Cash", "GBP"),
+                    importer=import_wise.get_importer(
+                        "Assets:Wise:Cash", "GBP"),
                     account="Assets:Wise:Cash",
                     directory=os.path.join(data_dir, "wise_gbp"),
                 )
@@ -165,7 +171,8 @@ def get_import_config(data_dir, output_dir):
             data_sources=[
                 dict(
                     module="beancount_import.source.generic_importer_source_beangulp",
-                    importer=import_wise.get_importer("Assets:Wise:Cash", "EUR"),
+                    importer=import_wise.get_importer(
+                        "Assets:Wise:Cash", "EUR"),
                     account="Assets:Wise:Cash",
                     directory=os.path.join(data_dir, "wise_eur"),
                 )
@@ -178,7 +185,8 @@ def get_import_config(data_dir, output_dir):
             data_sources=[
                 dict(
                     module="beancount_import.source.generic_importer_source_beangulp",
-                    importer=import_revolut.get_importer("Assets:Revolut:Cash", "USD"),
+                    importer=import_revolut.get_importer(
+                        "Assets:Revolut:Cash", "USD"),
                     account="Assets:Revolut:Cash",
                     directory=os.path.join(data_dir, "revolut_usd"),
                 )
@@ -191,7 +199,8 @@ def get_import_config(data_dir, output_dir):
             data_sources=[
                 dict(
                     module="beancount_import.source.generic_importer_source_beangulp",
-                    importer=import_revolut.get_importer("Assets:Revolut:Cash", "GBP"),
+                    importer=import_revolut.get_importer(
+                        "Assets:Revolut:Cash", "GBP"),
                     account="Assets:Revolut:Cash",
                     directory=os.path.join(data_dir, "revolut_gbp"),
                 )
@@ -204,7 +213,8 @@ def get_import_config(data_dir, output_dir):
             data_sources=[
                 dict(
                     module="beancount_import.source.generic_importer_source_beangulp",
-                    importer=import_revolut.get_importer("Assets:Revolut:Cash", "EUR"),
+                    importer=import_revolut.get_importer(
+                        "Assets:Revolut:Cash", "EUR"),
                     account="Assets:Revolut:Cash",
                     directory=os.path.join(data_dir, "revolut_eur"),
                 )
@@ -222,13 +232,15 @@ def get_import_config(data_dir, output_dir):
                     directory=os.path.join(data_dir, "ibkr"),
                 )
             ],
-            transactions_output=os.path.join(output_dir, "ibkr", "transactions.bean"),
+            transactions_output=os.path.join(
+                output_dir, "ibkr", "transactions.bean"),
         ),
         "seb-debet": dict(
             data_sources=[
                 dict(
                     module="beancount_import.source.generic_importer_source_beangulp",
-                    importer=import_seb.get_importer("Aktīvi:SEB:Debetkarte", "EUR"),
+                    importer=import_seb.get_importer(
+                        "Aktīvi:SEB:Debetkarte", "EUR"),
                     account="Aktīvi:SEB:Debetkarte",
                     directory=os.path.join(data_dir, "seb"),
                 )
@@ -242,7 +254,7 @@ def get_import_config(data_dir, output_dir):
                 dict(
                     module="beancount_import.source.generic_importer_source_beangulp",
                     importer=import_seb.get_importer(
-                        "AAktīvi:SEB:Kredītkarte", "EUR"),
+                        "Aktīvi:SEB:Kredītkarte", "EUR"),
                     account="Aktīvi:SEB:Kredītkarte",
                     directory=os.path.join(data_dir, "seb"),
                 )
