@@ -57,3 +57,11 @@ importers:
       income_interest_account: "Income:Crypto:Binance:Interest"
       income_referal_account: "Income:Crypto:Binance:Referal"
       income_distributions_account: "Income:Crypto:Binance:Distribution"
+  seb-debet:
+    importer: seb
+    account: Aktīvi:SEB:Debetkarte
+    currency: EUR
+  seb-credit:
+    importer: seb
+    account: Aktīvi:SEB:Kredītkarte
+    currency: EUR
