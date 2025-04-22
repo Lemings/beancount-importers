@@ -11,6 +11,7 @@ from uabean.importers import binance, ibkr, kraken, monobank
 import beancount_importers.import_monzo as import_monzo
 import beancount_importers.import_revolut as import_revolut
 import beancount_importers.import_wise as import_wise
+import beancount_importers.import_seb as import_seb
 
 
 def get_importer_config(type, account, currency, importer_params):
@@ -85,6 +86,14 @@ def get_importer_config(type, account, currency, importer_params):
             module="beancount_import.source.generic_importer_source_beangulp",
             importer=binance.Importer(**(importer_params or {})),
             emoji="🎰"
+        )
+    elif type == "seb":
+        return dict(
+            **common,
+            module="beancount_import.source.generic_importer_source_beangulp",
+            importer=import_seb.get_importer(account, currency),
+            description="Can be downloaded online from https://ibanka.seb.lv",
+            emoji="🥎"
         )
     else:
         return None
@@ -215,6 +224,33 @@ def get_import_config(data_dir, output_dir):
             ],
             transactions_output=os.path.join(output_dir, "ibkr", "transactions.bean"),
         ),
+        "seb-debet": dict(
+            data_sources=[
+                dict(
+                    module="beancount_import.source.generic_importer_source_beangulp",
+                    importer=import_seb.get_importer("Aktīvi:SEB:Debetkarte", "EUR"),
+                    account="Aktīvi:SEB:Debetkarte",
+                    directory=os.path.join(data_dir, "seb"),
+                )
+            ],
+            transactions_output=os.path.join(
+                output_dir, "seb", "transactions.bean"
+            )
+        ),
+        "seb-credit": dict(
+            data_sources=[
+                dict(
+                    module="beancount_import.source.generic_importer_source_beangulp",
+                    importer=import_seb.get_importer(
+                        "AAktīvi:SEB:Kredītkarte", "EUR"),
+                    account="Aktīvi:SEB:Kredītkarte",
+                    directory=os.path.join(data_dir, "seb"),
+                )
+            ],
+            transactions_output=os.path.join(
+                output_dir, "seb", "transactions.bean"
+            )
+        )
     }
     import_config_all = dict(
         data_sources=[],
