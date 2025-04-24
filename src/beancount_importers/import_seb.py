@@ -103,7 +103,7 @@ def categorizer(txn, row):
             posting_account = "Izmaksas:Televīzija:TET"
 
         if "atm" in payee.lower() and "izmaksa" in comment.lower():
-            posting_account = "Aktīvi:Skaidra nauda"
+            posting_account = "Assets:Skaidra nauda"
 
         # test = payee_to_account_mapping
 
@@ -206,5 +206,5 @@ def get_importer(account, currency):
 
 if __name__ == "__main__":
     ingest = beangulp.Ingest(
-        [get_importer("Aktīvi:SEB:Debetkarte", "EUR")], [])
+        [get_importer("Assets:SEB:Debetkarte", "EUR")], [])
     ingest()

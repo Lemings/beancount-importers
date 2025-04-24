@@ -240,8 +240,8 @@ def get_import_config(data_dir, output_dir):
                 dict(
                     module="beancount_import.source.generic_importer_source_beangulp",
                     importer=import_seb.get_importer(
-                        "Aktīvi:SEB:Debetkarte", "EUR"),
-                    account="Aktīvi:SEB:Debetkarte",
+                        "Assets:SEB:Debetkarte", "EUR"),
+                    account="Assets:SEB:Debetkarte",
                     directory=os.path.join(data_dir, "seb"),
                 )
             ],
@@ -254,8 +254,8 @@ def get_import_config(data_dir, output_dir):
                 dict(
                     module="beancount_import.source.generic_importer_source_beangulp",
                     importer=import_seb.get_importer(
-                        "Aktīvi:SEB:Kredītkarte", "EUR"),
-                    account="Aktīvi:SEB:Kredītkarte",
+                        "Assets:SEB:Kredītkarte", "EUR"),
+                    account="Assets:SEB:Kredītkarte",
                     directory=os.path.join(data_dir, "seb"),
                 )
             ],
