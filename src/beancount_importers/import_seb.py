@@ -42,65 +42,65 @@ def categorizer(txn, row):
  #   note = row[17]
     drcr = row[14]
 
-    # Izmaksas
+    # Expenses
     if drcr == "D":
 
         posting_account = None
 
         if "zoobums" in payee.lower():
-            posting_account = "Izmaksas:Suns:Barība:Zoobums"
+            posting_account = "Expenses:Suns:Barība:Zoobums"
 
         if "pepco" in payee.lower():
-            posting_account = "Izmaksas:Apģērbs:PEPCO"
+            posting_account = "Expenses:Apģērbs:PEPCO"
 
         if "maxima" in payee.lower() and "aizkraukle" in comment.lower():
-            posting_account = "Izmaksas:Pārtika:Maxima:Aizkraukle"
+            posting_account = "Expenses:Pārtika:Maxima:Aizkraukle"
 
         if "rimi" in payee.lower() and "salaspils" in comment.lower():
-            posting_account = "Izmaksas:Pārtika:Rimi:Salaspils"
+            posting_account = "Expenses:Pārtika:Rimi:Salaspils"
 
         if "lidl" in payee.lower() and "eizens" in comment.lower():
-            posting_account = "Izmaksas:Pārtika:LIDL:Eizenšteina"
+            posting_account = "Expenses:Pārtika:LIDL:Eizenšteina"
         if "lidl" in payee.lower() and "ogre" in comment.lower():
-            posting_account = "Izmaksas:Pārtika:LIDL:Ogre"
+            posting_account = "Expenses:Pārtika:LIDL:Ogre"
         if "lidl" in payee.lower() and "salaspils" in comment.lower():
-            posting_account = "Izmaksas:Pārtika:LIDL:Salaspils"
+            posting_account = "Expenses:Pārtika:LIDL:Salaspils"
 
         if "t" in payee.lower() and "kursi" in comment.lower() and "aizkraukle" in comment.lower():
-            posting_account = "Izmaksas:Remonts:Kursi:Aizkraukle"
+            posting_account = "Expenses:Remonts:Kursi:Aizkraukle"
         if "melanija" in payee.lower():
-            posting_account = "Izmaksas:Pārtika:Saldumi"
+            posting_account = "Expenses:Pārtika:Saldumi"
         if "ik efaly" in payee.lower():
-            posting_account = "Izmaksas:Pārtika:Tirgus"
+            posting_account = "Expenses:Pārtika:Tirgus"
         if "IKEA LATVIA RESTORANS" in payee:
-            posting_account = "Izmaksas:Pārtika:Ikea"
+            posting_account = "Expenses:Pārtika:Ikea"
 
         if "DEPO-VEIKALS-KRASTA" in payee:
-            posting_account = "Izmaksas:Remonts:Depo:Krasta"
+            posting_account = "Expenses:Remonts:Depo:Krasta"
         if "depo-veikals-bergi" in payee.lower():
-            posting_account = "Izmaksas:Remonts:Depo:Berģi"
+            posting_account = "Expenses:Remonts:Depo:Berģi"
         if "depo" in payee.lower() and "marupe" in comment.lower():
-            posting_account = "Izmaksas:Remonts:Depo:Mārupe"
+            posting_account = "Expenses:Remonts:Depo:Mārupe"
 
         if "ksenukai lucavsala" in payee.lower():
-            posting_account = "Izmaksas:Remonts:Ksenukai:Lucavsala"
+            posting_account = "Expenses:Remonts:Ksenukai:Lucavsala"
 
         if "drogas" in payee.lower() and "aizkraukle" in comment.lower():
-            posting_account = "Izmaksas:Kosmētika:Drogas:Aizkraukle"
+            posting_account = "Expenses:Kosmētika:Drogas:Aizkraukle"
         if "hottt" in payee.lower() and "aizkraukle" in comment.lower():
-            posting_account = "Izmaksas:Saimniecības preces:Hott:Aizkraukle"
+            posting_account = "Expenses:Saimniecības preces:Hott:Aizkraukle"
         if "virsi" in payee.lower() and "aizkraukle" in comment.lower():
-            posting_account = "Izmaksas:Auto:Degviela:Virsi:Aizkraukle"
+            posting_account = "Expenses:Auto:Degviela:Virsi:Aizkraukle"
         if "IKEA LATVIA-VEIKALS" in payee:
-            posting_account = "Izmaksas:Mebeles:Ikea"
+            posting_account = "Expenses:Mebeles:Ikea"
 
         if "seb banka" in payee.lower() and "mēneša maksa" in comment.lower():
-            posting_account = "Izmaksas:SEB:Mēneša maksa"
+            posting_account = "Expenses:SEB:Mēneša maksa"
         if "seb banka" in payee.lower() and "komisija" in comment.lower():
-            posting_account = "Izmaksas:SEB:Komisija"
+            posting_account = "Expenses:SEB:Komisija"
 
         if "tet" in payee.lower():
-            posting_account = "Izmaksas:Televīzija:TET"
+            posting_account = "Expenses:Televīzija:TET"
 
         if "atm" in payee.lower() and "izmaksa" in comment.lower():
             posting_account = "Assets:Skaidra nauda"
