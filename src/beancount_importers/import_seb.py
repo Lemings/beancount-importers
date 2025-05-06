@@ -95,9 +95,11 @@ def categorizer(txn, row):
             posting_account = "Expenses:Mebeles:Ikea"
 
         if "seb banka" in payee.lower() and "mēneša maksa" in comment.lower():
-            posting_account = "Expenses:SEB:Mēneša maksa"
+            posting_account = "Expenses:SEB:Mēneša-maksa"
         if "seb banka" in payee.lower() and "komisija" in comment.lower():
             posting_account = "Expenses:SEB:Komisija"
+        if "seb banka" in payee.lower() and "apkalpošanas" in comment.lower():
+            posting_account = "Expenses:SEB:Apkalpošanas-maksa"
 
         if "tet" in payee.lower():
             posting_account = "Expenses:Televīzija:TET"
