@@ -42,10 +42,9 @@ def categorizer(txn, row):
  #   note = row[17]
     drcr = row[14]
 
+    posting_account = None
     # Expenses
     if drcr == "D":
-
-        posting_account = None
 
         if "zoobums" in payee.lower():
             posting_account = "Expenses:Suns:Barība:Zoobums"
