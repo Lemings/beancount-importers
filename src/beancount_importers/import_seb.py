@@ -146,6 +146,26 @@ def categorizer(txn, row):
         if "atm" in payee.lower() and "izmaksa" in comment.lower():
             posting_account = "Assets:Skaidra nauda"
 
+        # Specific transactions
+        if transaction_id in TRANSACTIONS_CLASSIFIED_BY_ID:
+            posting_account = TRANSACTIONS_CLASSIFIED_BY_ID[transaction_id]
+
+        # Default by category
+        if not posting_account:
+            posting_account = UNCATEGORIZED_EXPENSES_ACCOUNT
+
+        account = txn.postings[0].account
+        amount = txn.postings[0].units.number
+
+        newAmount = Amount(-1 * amount, "EUR")
+
+        txn.postings[0] = data.Posting(
+            account, newAmount, None, None, None, None)
+
+        txn.postings.append(
+            data.Posting(posting_account, Amount(
+                amount, "EUR"), None, None, None, None)
+        )
     if drcr == "C":
         if "seb banka" in payee.lower() and "izmaksātie procenti" in comment.lower():
             posting_account = "Income:Izmaksatie-procenti"
@@ -177,28 +197,10 @@ def categorizer(txn, row):
         # if comment.endswith("to my savings jar"):
         #     posting_account = "Assets:Wise:Savings:USD"
 
-        # Specific transactions
-        if transaction_id in TRANSACTIONS_CLASSIFIED_BY_ID:
-            posting_account = TRANSACTIONS_CLASSIFIED_BY_ID[transaction_id]
-
         # Default by category
         if not posting_account:
             posting_account = UNCATEGORIZED_EXPENSES_ACCOUNT
 
-        account = txn.postings[0].account
-        amount = txn.postings[0].units.number
-
-        newAmount = Amount(-1 * amount, "EUR")
-
-        txn.postings[0] = data.Posting(
-            account, newAmount, None, None, None, None)
-
-        txn.postings.append(
-            data.Posting(posting_account, Amount(
-                amount, "EUR"), None, None, None, None)
-        )
-    else:
-        posting_account = UNCATEGORIZED_EXPENSES_ACCOUNT
         txn.postings.append(
             data.Posting(posting_account, -
                          txn.postings[0].units, None, None, None, None)
