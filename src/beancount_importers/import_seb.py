@@ -61,6 +61,9 @@ def categorizer(txn, row):
         if "x jeans" in payee.lower():
             posting_account = "Expenses:Apģērbs:X-jeans"
 
+        if "h&m" in payee.lower():
+            posting_account = "Expenses:Apģērbs:H-un-M"
+
         if "maxima" in payee.lower() and "aizkraukle" in comment.lower():
             posting_account = "Expenses:Pārtika:Maxima:Aizkraukle"
 
@@ -70,6 +73,8 @@ def categorizer(txn, row):
             posting_account = "Expenses:Pārtika:Rimi:Aizkraukle"
         if "rimi" in payee.lower() and "Saga" in comment.lower():
             posting_account = "Expenses:Pārtika:Rimi:Sāga"
+        if "rimi" in payee.lower() and "alfa" in comment.lower():
+            posting_account = "Expenses:Pārtika:Rimi:Alfa"
 
         if "lidl" in payee.lower() and "eizens" in comment.lower():
             posting_account = "Expenses:Pārtika:LIDL:Eizenšteina"
@@ -96,7 +101,9 @@ def categorizer(txn, row):
             posting_account = "Expenses:Remonts:Depo:Berģi"
         if "depo" in payee.lower() and "marupe" in comment.lower():
             posting_account = "Expenses:Remonts:Depo:Mārupe"
-
+         if "depo" in payee.lower() and "dreilini" in comment.lower():
+            posting_account = "Expenses:Remonts:Depo:Dreiliņi"
+        
         if "ksenukai lucavsala" in payee.lower():
             posting_account = "Expenses:Remonts:Ksenukai:Lucavsala"
         if "ksenukai ozols" in payee.lower():
@@ -118,8 +125,11 @@ def categorizer(txn, row):
         if "latvenergo" in payee:
             posting_account = "Expenses:Māja:Elektrība"
 
+        if "ĶILUPE SIA" in payee:
+            posting_account = "Expenses:Māja:Atkritumi"
+
         if "IKEA LATVIA-VEIKALS" in payee:
-            posting_account = "Expenses:Mebeles:Ikea"
+            posting_account = "Expenses:Mēbeles:Ikea"
 
         if "seb banka" in payee.lower() and "mēneša maksa" in comment.lower():
             posting_account = "Expenses:SEB:Mēneša-maksa"
@@ -130,7 +140,7 @@ def categorizer(txn, row):
         if "seb banka" in payee.lower() and "apkalpošanas" in comment.lower():
             posting_account = "Expenses:SEB:Apkalpošanas-maksa"
         if "seb banka" in payee.lower() and "iedzīvotāju ienākuma nodoklis no procentiem" in comment.lower():
-            posting_account = "Expenses: Nodokļi: Ienākuma-nodoklis-no-procentiem"
+            posting_account = "Expenses:Nodokļi:Ienākuma-nodoklis-no-procentiem"
         if "SEB Life and Pension Baltic SE" in payee:
             posting_account = "Expenses:Apdrošināšana:Apgādnieka-zaudēšana"
 
