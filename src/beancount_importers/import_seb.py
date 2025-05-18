@@ -101,13 +101,13 @@ def categorizer(txn, row):
             posting_account = "Expenses:Remonts:Depo:Berģi"
         if "depo" in payee.lower() and "marupe" in comment.lower():
             posting_account = "Expenses:Remonts:Depo:Mārupe"
-         if "depo" in payee.lower() and "dreilini" in comment.lower():
+        if "depo" in payee.lower() and "dreilini" in comment.lower():
             posting_account = "Expenses:Remonts:Depo:Dreiliņi"
-        
+
         if "ksenukai lucavsala" in payee.lower():
             posting_account = "Expenses:Remonts:Ksenukai:Lucavsala"
         if "ksenukai ozols" in payee.lower():
-            posting_account = "Expenses:Remonts:Ksenukai:Lucavsala"
+            posting_account = "Expenses:Remonts:Ksenukai:Ozols"
 
         if "drogas" in payee.lower() and "aizkraukle" in comment.lower():
             posting_account = "Expenses:Kosmētika:Drogas:Aizkraukle"
