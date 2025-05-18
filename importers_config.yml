@@ -59,9 +59,9 @@ importers:
       income_distributions_account: "Income:Crypto:Binance:Distribution"
   seb-debet:
     importer: seb
-    account: Aktīvi:SEB:Debetkarte
+    account: Assets:SEB:Debetkarte
     currency: EUR
   seb-credit:
     importer: seb
-    account: Aktīvi:SEB:Kredītkarte
+    account: Assets:SEB:Kredītkarte
     currency: EUR
